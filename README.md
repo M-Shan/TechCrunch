@@ -11,5 +11,4 @@ currently used in market or technolgies which might be used in future.
 
 More detail --> To be continue ...
 
-Author : Muhammad Shan Ur Rehman <br>
-	     Zahid Riaz
+Author : Muhammad Shan Ur Rehman

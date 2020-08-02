@@ -1,4 +1,4 @@
-https://www.python.org/# Tech Crunchers
+# Tech Crunchers
 
 Repository for various utilities development as well as for sharing and implementing technological ideas.
 

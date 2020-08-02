@@ -1,0 +1,5 @@
+# list of required packages
+
+numpy
+opencv-python
+scipy

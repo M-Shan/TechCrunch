@@ -1,4 +1,4 @@
-"""
+""
     Script for saving the links of all PSL 2019 matches
     :file: psl_matches.py
     :platform: Windows 10

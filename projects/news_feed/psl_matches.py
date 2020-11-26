@@ -22,7 +22,6 @@ import utilities
 
 
 def main():
-
     """
         main function
     """
@@ -52,8 +51,11 @@ def main():
 
     pandas_data_frame = pd.DataFrame(all_fetched_information)
 
-    #printing all fetched info
+    # printing all fetched information
     print(pandas_data_frame.to_string())
+
+    # calling function to create the psl_json_data file and saving it in separate data folder
+    utilities.creating_psl_json_file(all_fetched_information)
 
 
 if __name__ == '__main__':

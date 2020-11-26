@@ -18,8 +18,6 @@ other platforms available. Some of them are listed below:
 
 ### How Django works?
 > The working pattern of Django is just like an _MVT (Model view Template)_ works. Here model act as a data base of our website, view is the final representation of website that is seen by end user and templates are a set of pre-deifned functions readily available for performing specific tasks. 
->
->> ![This is a alt text.](/Desktop/django.png "This is a sample image.")
 
 ### How to install and use Django?
 > For thourough understanding of Django, use [this link](https://www.youtube.com/watch?v=M9rtf7icuG0&ab_channel=edureka%21). Here the installation and usage of Django has been shown in a 

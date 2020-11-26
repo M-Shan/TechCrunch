@@ -1,13 +1,12 @@
 # PSL News Website
 
-## The purpose of this project is to display the grabbed information of psl matches
-onto a website that is more helpful for the user to read and understad
+## The purpose of this project is to display the grabbed information of psl matches onto a website that is more helpful for the user to read and understad
 
 ## How to create your own website that displays PSL matches information
 
 > In order to perform this task, we can use a sophisticated web development framework
-specifically designed for python i.e. **Django**. This framwork works on a basic principle 
-called **Don't repeat yourself**. It means that its better to keep ypur code simple and non-repeatable. 
+specifically designed for python i.e. **Django**. This framework works on a basic principle 
+called **Don't repeat yourself**. It means that its better to keep your code simple and non-repeatable. 
 
 ### Features of Django
 > Being a high-level python web framework, Django offers variety of features that makes it different from 

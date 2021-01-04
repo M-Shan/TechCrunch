@@ -1,5 +1,28 @@
+"""
+    This script involves all the functions that make up
+    the tic tac toe game
+    :file: game_functions.py
+    :platform: windows 10
+    :synopsis:
+        Script containing common variables and functions
+    :author:
+        Muhammad Faheem ur Rehman
+        email: faheemlasani1034@gmail.com
+"""
+
 
 def scan_result(index_1, index_2, index_3, board, first_player_symbol, second_player_symbol):
+    """
+       Function for getting three indices of the tic tac toe board along with player symbols
+
+       :param string index_1 and index_2 and index_3 : Three indices that contain the user defined symbols
+       :param list board: List that conatains all the indices of tic tac toe game
+       :param string first_player_symbol and second_player_symbol: Contains player symbols defined at the start of game
+
+       :returns:  True if the three indices are equal
+       :return type: Boolean
+    """
+
     if (index_1 == index_2 == index_3) and (index_1.lower() == first_player_symbol):
         print('CONGRATULATIONS PLAYER 1; YOU WON !!!')
         print('\n')
@@ -38,11 +61,21 @@ def scan_result(index_1, index_2, index_3, board, first_player_symbol, second_pl
 
 
 def make_decision(board, first_player_symbol, second_player_symbol):
+    """
+       Function for checking the game result
+
+       :param list board: List that contains all the indices of tic tac toe game
+       :param string first_player_symbol and second_player_symbol: Contains player symbols defined at the start of game
+
+       :returns:  Variable result in case that all indices are equal
+       :return type: Boolean
+    """
 
     combination_list = [(0, 1, 2), (3, 4, 5), (6, 7, 8), (0, 3, 6), (2, 5, 8), (1, 4, 7), (0, 4, 8), (2, 4, 6)]
 
     for combos in combination_list:
-        result = scan_result(board[combos[0]], board[combos[1]], board[combos[2]], board, first_player_symbol, second_player_symbol)
+        result = scan_result(board[combos[0]], board[combos[1]], board[combos[2]], board, first_player_symbol,
+                             second_player_symbol)
         if result:
             return result
         else:
@@ -52,6 +85,14 @@ def make_decision(board, first_player_symbol, second_player_symbol):
 
 
 def greeting_function(board):
+    """
+             Function for displaying the tic tac toe board
+
+             :param list board: List that contains all the indices of tic tac toe game
+
+             :returns:  None
+             :return type: None
+          """
     print('                                                             ***WELCOME TO THE TIC TOE GAME***')
     print('\n')
     print('                                                          |           |', '           |', '           |')
@@ -63,6 +104,14 @@ def greeting_function(board):
 
 
 def players_symbol():
+    """
+              Function for asking players to select their symbols
+
+              :param : None
+
+              :returns:  Player selected symbols
+              :return type: string
+           """
     symbol_one = str()
     symbol_two = str()
     symbol = True
@@ -86,6 +135,13 @@ def players_symbol():
 
 
 def game_rules():
+    """
+            Function for displaying the game rules
+
+            :param : None
+
+            :returns:  None
+         """
     key = False
     print('\n')
     print('                                                             ***Lets read the instructions of the game***')
@@ -121,6 +177,14 @@ def game_rules():
 
 
 def game_on(board, first_player_symbol, second_player_symbol):
+    """
+           Function for starting the game
+
+           :param : None
+
+           :returns:  Game result
+           :return type: Boolean
+        """
     flag = True
     player1_key = True
     player2_key = True
@@ -240,7 +304,6 @@ def game_on(board, first_player_symbol, second_player_symbol):
         print(
             '                                                              |     {}     |     {}     |     {}     |'.format(
                 board[6], board[7], board[8]))
-
 
         while player2_key:
             player_two_number = int(input('Player 2: Enter your symbol location {} from (1-9) '.format(count)))

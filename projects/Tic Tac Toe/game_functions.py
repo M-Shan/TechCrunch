@@ -136,12 +136,12 @@ def players_symbol():
 
 def game_rules():
     """
-            Function for displaying the game rules
+    Function for displaying the game rules
 
-            :param : None
+    :param : None
 
-            :returns:  None
-         """
+    :returns:  None
+    """
     key = False
     print('\n')
     print('                                                             ***Lets read the instructions of the game***')

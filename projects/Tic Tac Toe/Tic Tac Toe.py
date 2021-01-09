@@ -20,11 +20,10 @@ import game_functions
 
 
 def main():
-
     """
         main function
     """
-
+    key = True
     again_play = True
     board = [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']
 
@@ -44,13 +43,17 @@ def main():
         print('\n')
 
         #asking user weather he/she wants to play again or not
-        answer = input('DO YOU WANT OT PLAY AGAIN? (y/n)')
-        if answer in ['y', 'Y']:
-            board = [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']
-            pass
-        elif answer in ['n', 'N']:
-            print('                                   ******************* GOOD BYE******************')
-            again_play = False
+        while key:
+            answer = input('DO YOU WANT TO PLAY AGAIN? (y/n)')
+            if answer in ['y', 'Y']:
+                board = [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']
+                break
+            elif answer in ['n', 'N']:
+                print('                                   ******************* GOOD BYE******************')
+                again_play = False
+                break
+            else:
+                print('\nSorry, you have put wrong input. Please try again!')
 
 
 if __name__ == '__main__':

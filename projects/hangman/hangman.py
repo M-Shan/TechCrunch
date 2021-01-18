@@ -15,21 +15,26 @@
 """
 
 import hangman_functions
+from colorama import Fore, Back, Style, init
+import termcolor
 
 
 def main():
     flag = True
     key = True
 
-    #saving the game data in a separate dictionary
-    words_dict = {'COUNTRIES': ['GERMANY', 'UGANDA', 'FIJI', 'FINLAND', 'ARGENTINA', 'QATAR', 'EGYPT', 'AUSTRALIA'],
-                  'SCIENCE': ['VELOCITY', 'INERTIA', 'REACTION', 'FUSION', 'GRAVITY', 'FORCE', 'ELECTRONS',
-                              'RADIATION'],
-                  'FRUITS': ['MANGO', 'GUAVA', 'PEAR', 'APRICOT', 'MELON', 'GRAPES', 'ORANGE', 'FIG'],
-                  'PROFESSIONS': ['PHYSICIST', 'ASTRONOMER', 'BARTENDER', 'LIBRARIAN', 'GAMER', 'ACCOUNTANT', 'BUTLER',
-                                  'BIOLOGIST']}
+    # saving the game data in a separate dictionary
+    words_dict = {
+        'COUNTRIES': ['GERMANY', 'UGANDA', 'FIJI', 'FINLAND', 'ARGENTINA', 'QATAR', 'EGYPT', 'AUSTRALIA', 'BRAZIL',
+                      'CHINA', 'SINGAPORE', 'SWEDEN'],
+        'SCIENCE': ['VELOCITY', 'INERTIA', 'REACTION', 'FUSION', 'GRAVITY', 'FORCE', 'ELECTRONS', 'RADIATION', 'GALAXY',
+                    'PHOTOSYNTHESIS', 'MITOSIS', 'ENERGY'],
+        'FRUITS': ['MANGO', 'GUAVA', 'PEAR', 'APRICOT', 'MELON', 'GRAPES', 'ORANGE', 'FIG', 'PLUM', 'COCONUT', 'DATES',
+                   'STRAWBERRY'],
+        'PROFESSIONS': ['PHYSICIST', 'ASTRONOMER', 'BARTENDER', 'LIBRARIAN', 'GAMER', 'ACCOUNTANT', 'BUTLER',
+                        'BIOLOGIST', 'CHEMIST', 'TEACHER', 'DERMATOLOGIST', 'ENGINEER']}
 
-    #calling all basic functions
+    # calling all basic functions
     hangman_functions.greeting_function()
     while flag:
 
@@ -39,14 +44,15 @@ def main():
         result = hangman_functions.game_starts(guess_list, memory_list)
 
         while key:
-            again_play = input('DO YOU WANT TO PLAY AGAIN? (Y/N)')
+            init()
+            again_play = input(Fore.MAGENTA + 'DO YOU WANT TO PLAY AGAIN? (Y/N)' + Style.BRIGHT)
             if again_play in ['Y', 'y']:
                 break
             elif again_play in ['N', 'n']:
                 flag = False
                 break
             else:
-                print('OOPS! WRONG INPUT. TRY AGAIN!')
+                termcolor.cprint('OOPS! WRONG INPUT. TRY AGAIN!', 'red', attrs=['bold'])
 
 
 if __name__ == '__main__':

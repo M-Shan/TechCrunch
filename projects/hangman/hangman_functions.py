@@ -11,7 +11,9 @@
         email: faheemlasani1034@gmail.com
 """
 
-#importing required libraries
+# importing required libraries
+from colorama import init, Fore, Back, Style
+import termcolor
 from random import shuffle
 import string
 
@@ -36,7 +38,7 @@ def check_word(user_letter, guess_list, memory_list, used_letters):
         else:
             pass
 
-    print('                                                    ', end=' ')
+    print('{:>50}'.format(' '), end=' ')
 
     for i in range(len(guess_list)):
         if user_letter == guess_list[i]:
@@ -49,11 +51,11 @@ def check_word(user_letter, guess_list, memory_list, used_letters):
         print(letters, end=' ')
 
     if check:
-        print('             YESS; YOU GOT RIGHT', end=' ')
+        termcolor.cprint('{:>40}'.format('YESS; YOU GOT RIGHT'), 'green', attrs=['bold', 'blink'], end=' ')
     else:
-        print('             OOPPSSS; YOU MISSED', end=' ')
+        termcolor.cprint('{:>40}'.format('OPPSSSS! YOU MISSED'), 'red', attrs=['bold'],  end=' ')
 
-    print('                 USED LETTERS:', end=' ')
+    termcolor.cprint('{:>40}'.format('USED LETTERS: '),'white', end=' ')
     for letters in used_letters:
         if letters.isupper():
             print(letters, end=' ')
@@ -74,22 +76,23 @@ def greeting_function():
     """
     flag = True
     print('\n')
-    print('                                                       *** WELCOME TO HANGMAN GAME ***')
+    termcolor.cprint('{:>100}'.format('*** WELCOME TO HANGMAN GAME ***'), 'yellow', attrs=['bold'])
     print('\n')
-    print('                                              <><><> LETS UNDERSTAND HOW TO PLAY THE GAME <><><>')
+    termcolor.cprint('{:>110}'.format('<><><> LETS UNDERSTAND HOW TO PLAY THE GAME <><><>'), 'yellow', attrs=['bold'])
     print('\n')
-    print('This is a type of word guessing game. First you have the choice to choose\n'
-          'from four categories. After choosing your favourite one, a blank word will\n'
-          'appear on your screen to guess. You will have limited turns to guess the word.\n'
-          'If within allowed turns, you guess the word correctly, YOU WIN :-)\n'
-          'Otherwise you will be HANGED :-(\n')
+    termcolor.cprint('This is a type of word guessing game. First you have the choice to choose\n'
+                     'from four categories. After choosing your favourite one, a blank word will\n'
+                     'appear on your screen to guess. You will have limited turns to guess the word.\n'
+                     'If within allowed turns, you guess the word correctly, YOU WIN :-)\n'
+                     'Otherwise you will be HANGED :-(\n', 'white')
 
     while flag:
-        understood = input('PLEASE PRESS LETTER (P) IF YOU WANT TO START THE GAME!')
+        init()
+        understood = input(Fore.MAGENTA + 'PLEASE PRESS LETTER (P) IF YOU WANT TO START THE GAME!\n' + Style.BRIGHT)
         if understood in ['P', 'p']:
             break
         else:
-            print('SORRY! YOU HAVE ENTERED WRONG LETTER. TRY AGAIN')
+            termcolor.cprint('SORRY! YOU HAVE ENTERED WRONG LETTER. TRY AGAIN', 'red', attrs=['bold'])
 
 
 def display_categories():
@@ -102,8 +105,9 @@ def display_categories():
        :return type: None
     """
     print('\n')
-    print('YOU HAVE FOLLOWING FOUR CATEGORIES TO CHOOSE FROM:')
-    print('COUNTRIES    (Press 1)\nSCIENCE      (Press 2)\nFRUITS       (Press 3)\nPROFESSIONS  (Press 4)')
+    termcolor.cprint('YOU HAVE FOLLOWING FOUR CATEGORIES TO CHOOSE FROM:', 'white')
+    termcolor.cprint('COUNTRIES    (Press 1)\nSCIENCE      (Press 2)\nFRUITS       (Press 3)\nPROFESSIONS  (Press 4)',
+                     'yellow', attrs=['bold'])
 
 
 def user_input():
@@ -119,7 +123,8 @@ def user_input():
     selected_category = str()
 
     while flag:
-        user_category_input = input('PLEASE SELECT YOUR CATEGORY')
+        init()
+        user_category_input = input(Fore.MAGENTA + 'PLEASE SELECT YOUR CATEGORY\n' + Style.BRIGHT)
         if user_category_input == '1':
             selected_category = 'COUNTRIES'
             break
@@ -133,9 +138,11 @@ def user_input():
             selected_category = 'PROFESSIONS'
             break
         else:
-            print('\nOOPS! YOU HAVE CHOOSED OUT OF RANGE NUMBER. TRY AGAIN')
+            termcolor.cprint('\nOOPS! YOU HAVE CHOOSED OUT OF RANGE NUMBER. TRY AGAIN', 'red', attrs=['bold'])
 
-    print(f'\nGREAT! YOU HAVE CHOOSED |{selected_category}| category.')
+    termcolor.cprint(f'\nGREAT! YOU HAVE CHOOSED ', 'white', end=' ')
+    termcolor.cprint(f'|{selected_category}|', 'yellow', attrs=['bold'], end=' ')
+    print('CATEGORY')
     return selected_category
 
 
@@ -159,8 +166,8 @@ def generate_guess_word(words_dict, category):
     for i in range(len(guess_list)):
         memory_list.append('*')
 
-    print(f'YOUR WORD CONTAINS {len(guess_word)} ALPHABETS')
-    print('                                                    ', end=' ')
+    termcolor.cprint(f'YOUR WORD CONTAINS {len(guess_word)} ALPHABETS', 'white')
+    print('{:>50}'.format(' '), end=' ')
     for i in range(len(guess_word)):
         print('*', end=' ')
     return guess_word, guess_list, memory_list
@@ -181,11 +188,11 @@ def game_starts(guess_list, memory_list):
     used_letters = []
 
     while total_turns >= 1:
-
-        user_letter = input(f'\nENTER YOUR LETTER;  {total_turns} TURN/S LEFT')
+        init()
+        user_letter = input(Fore.MAGENTA + f'\nENTER YOUR LETTER;  {total_turns} TURN/S LEFT\n' + Style.BRIGHT)
         if (user_letter in list(string.ascii_lowercase)) or (user_letter in list(string.ascii_uppercase)):
             if user_letter in used_letters:
-                print('OOPS! YOU HAVE ALREADY USED THIS ALPHABET. TRY AGAIN!')
+                termcolor.cprint('OOPS! YOU HAVE ALREADY USED THIS ALPHABET. TRY AGAIN!', 'red', attrs=['bold'])
                 continue
             else:
                 if user_letter.islower():
@@ -195,13 +202,13 @@ def game_starts(guess_list, memory_list):
                     used_letters.append(user_letter.lower())
                     used_letters.append(user_letter)
         else:
-            print('OOPS! YOU HAVE PLACED WRONG INPUT. PLEASE ENTER AN ALPHABET!')
+            termcolor.cprint('OOPS! YOU HAVE PLACED WRONG INPUT. PLEASE ENTER AN ALPHABET!', 'red', attrs=['bold'])
             continue
 
         result = check_word(user_letter, guess_list, memory_list, used_letters)
 
         if '*' not in memory_list:
-            print('CONGRATULATIONS !!! YOU GUESSED THE WORD !!!')
+            termcolor.cprint('CONGRATULATIONS !!! YOU GUESSED THE WORD !!!', 'green', attrs=['bold', 'blink'])
             return True
 
         if result:
@@ -210,10 +217,10 @@ def game_starts(guess_list, memory_list):
             total_turns = total_turns - 1
 
     if total_turns < 1:
-        print('OOOPS! YOU ARE OUT OF TURNS, BETTER LUCK NEXT TIME')
-        print('YOUR WORD WAS:')
-        print('                                                    ', end=' ')
+        termcolor.cprint('OOOPS! YOU ARE OUT OF TURNS, BETTER LUCK NEXT TIME', 'red', attrs=['bold'])
+        termcolor.cprint('YOUR WORD WAS:', 'white')
+        print('{:>50}'.format(' '), end=' ')
         for letters in guess_list:
-            print(letters, end=' ')
+            termcolor.cprint(letters, 'blue', attrs=['bold'],  end=' ')
         print('\n')
         return True
